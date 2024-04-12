@@ -8,7 +8,7 @@ date2 = input("Write the year, month and day of the second date: ")
 d2 = list(int(x) for x in date2.split())
 y = datetime.datetime(d2[0], d2[1], d2[2])
 
-time_difference = y - x
+time_difference = abs(y - x)
 seconds_difference = time_difference.total_seconds()
 
 print(f"Time difference in seconds: {seconds_difference}")

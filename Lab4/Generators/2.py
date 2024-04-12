@@ -1,7 +1,7 @@
 def ev():
     current = 0
     stop = int(input())
-    while current < stop:
+    while current <= stop-2:
         current += 2
         yield current
     
