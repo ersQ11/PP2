@@ -17,6 +17,8 @@ HEIGHT = 600
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
+font = pygame.font.Font(None, 36)
+
 FPS = 5
 
 CELL = 30
@@ -39,7 +41,9 @@ class Snake:
         self.dx = 1
         self.dy = 0
         self.score = 0
+        self.level = 1
         self.speed = 5  # speed и начальная скорость
+        self.N = 3
 
     def move(self):
         for i in range(len(self.body) - 1, 0, -1):
@@ -74,8 +78,10 @@ class Snake:
             self.body.append(Point(head.x, head.y))
             food.respawn()
             self.score += random.randint(1, 3)
-            if self.score % 5 == 0:
+            if self.score >= self.N:
                 self.speed += 1  # Увеличиваем скорость змейки
+                self.level += 1
+                self.N += 3
             return True
         return False
 
@@ -130,6 +136,11 @@ while not done:
                 snake.dy = 1
 
     draw_grid_chess()
+
+    text = font.render("Score: " + str(snake.score), True, colorGREEN)
+    screen.blit(text, (10, 10))
+    text = font.render("Level: " + str(snake.level), True, colorGREEN)
+    screen.blit(text, (10, 50))
 
     snake.move()
     snake.draw()

@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 screen = pygame.display.set_mode((800, 400))
 
-playlist = ['sounds/1.mp3', 'sounds/2.mp3', 'sounds/3.mp3']
+playlist = ['sounds/sound1.mp3', 'sounds/sound2.mp3', 'sounds/sound3.mp3']
 current_song = 0
 
 def play_next_song():
